@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">News_compse</string>
+    <string name="s_make_sure_you_have_an_active_data_connection">No internet</string>
+</resources>

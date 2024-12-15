@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "News_compse"
+rootProject.name = "Quotes_app"
 include ':app'

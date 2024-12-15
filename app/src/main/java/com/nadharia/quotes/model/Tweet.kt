@@ -1,4 +1,4 @@
-package com.example.news_compse.model
+package com.nadharia.quotes.model
 
 data class Tweet(
     val category: String,

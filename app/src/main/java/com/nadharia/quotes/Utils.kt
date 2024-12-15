@@ -1,4 +1,4 @@
-package com.example.news_compse
+package com.nadharia.quotes
 
 import android.content.Context
 import android.net.ConnectivityManager

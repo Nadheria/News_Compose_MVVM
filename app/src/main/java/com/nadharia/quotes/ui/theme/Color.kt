@@ -1,4 +1,4 @@
-package com.example.news_compse.ui.theme
+package com.nadharia.quotes.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,6 +1,7 @@
-package com.example.news_compse.di
+package com.nadharia.quotes.di
 
-import com.example.news_compse.APIService
+import com.nadharia.quotes.api.APIService
+import com.nadharia.quotes.repository.QuotesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,5 +55,11 @@ object NetworkModule {
             .build()
     }
 
+
+    @Provides
+    @Singleton
+    fun provideQuotesRepository(apiService: APIService): QuotesRepository {
+        return QuotesRepository(apiService)
+    }
 
 }

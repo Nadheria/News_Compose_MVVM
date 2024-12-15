@@ -1,7 +1,7 @@
-package com.example.news_compse.di
+package com.nadharia.quotes.di
 import android.content.Context
-import com.example.news_compse.R
-import com.example.news_compse.Utils
+import com.nadharia.quotes.R
+import com.nadharia.quotes.Utils
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException

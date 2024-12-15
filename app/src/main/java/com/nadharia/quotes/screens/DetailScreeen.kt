@@ -26,12 +26,13 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nadharia.quotes.ViewModels.DetailViewModel
 
 @Composable
 fun DetailScreen() {
-    val detailViewModel:DetailViewModel = viewModel()
+    val detailViewModel:DetailViewModel = hiltViewModel()
     val tweets = detailViewModel.details.collectAsState()
     LazyColumn(content = {
         items(tweets.value){

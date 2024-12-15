@@ -25,11 +25,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.nadharia.quotes.ViewModels.CategoryViewModel
 
 
 @Composable
-fun CategoryScreen() {
+fun CategoryScreen(nevController:NavController) {
     val categoryViewModel: CategoryViewModel = hiltViewModel()
     val categories: State<List<String>> = categoryViewModel.categories.collectAsState()
 
@@ -39,7 +40,7 @@ fun CategoryScreen() {
         verticalArrangement = Arrangement.SpaceAround,
     ) {
         items(categories.value.distinct()) {
-            CategoryItem(it)
+            CategoryItem(it,nevController)
         }
     }
 }
@@ -47,7 +48,7 @@ fun CategoryScreen() {
 
 
 @Composable
-fun CategoryItem(title: String) {
+fun CategoryItem(title: String,nevController:NavController) {
 //    val context = LocalContext.current
 
     Card(
@@ -57,7 +58,7 @@ fun CategoryItem(title: String) {
             .clip(RoundedCornerShape(8.dp))
             .padding(8.dp)
             .clickable {
-
+                nevController.navigate("DetailScreen")
             },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {

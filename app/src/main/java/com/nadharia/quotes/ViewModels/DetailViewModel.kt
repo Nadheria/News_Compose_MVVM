@@ -1,5 +1,6 @@
 package com.nadharia.quotes.ViewModels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nadharia.quotes.model.Tweet
@@ -11,14 +12,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(private val repository: QuotesRepository) : ViewModel() {
+class DetailViewModel @Inject constructor(
+    private val repository: QuotesRepository,
+    private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
     val details: StateFlow<List<Tweet>>
         get() = repository.tweets
 
     init {
         viewModelScope.launch {
-            repository.getTweets("android")
+            val category = savedStateHandle.get<String>("category") ?: "motivation"
+            repository.getTweets(category)
         }
     }
 }

@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nadharia.quotes.model.Tweet
-import com.nadharia.quotes.model.tweetclass
 import com.nadharia.quotes.repository.QuotesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +20,7 @@ class DetailViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val category = savedStateHandle.get<String>("category") ?: "motivation"
+            val category = savedStateHandle.get<String>("category") ?: "android"
             repository.getTweets(category)
         }
     }

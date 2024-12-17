@@ -48,17 +48,15 @@ fun CategoryScreen(nevController:NavController) {
 
 
 @Composable
-fun CategoryItem(title: String,nevController:NavController) {
-//    val context = LocalContext.current
-
+fun CategoryItem(title: String, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(2f) // Adjust ratio to match your design
+            .aspectRatio(2f)
             .clip(RoundedCornerShape(8.dp))
             .padding(8.dp)
             .clickable {
-                nevController.navigate("DetailScreen")
+                navController.navigate("DetailScreen?category=$title")
             },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {

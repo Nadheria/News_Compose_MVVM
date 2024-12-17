@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             QuotesTheme {
-               App()
+                MyApp()
             }
         }
     }
@@ -30,21 +30,31 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun App() {
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "CategoryScreen") {
-
-        composable(route = "CategoryScreen") {
+fun ComposeNavGraph(navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        startDestination = "CategoryScreen"
+    ) {
+        composable("CategoryScreen") {
             CategoryScreen(navController)
         }
-
-        composable(route = "DetailScreen/{Category}", arguments = listOf(
-            navArgument("Category"){
-                type= NavType.StringType
-            }
-        )) {
-            it.arguments!!.getString("Category")
+        composable(
+            route = "DetailScreen?category={category}",
+            arguments = listOf(
+                navArgument("category") {
+                    type = NavType.StringType
+                    defaultValue = "android"
+                }
+            )
+        ) {
             DetailScreen()
         }
     }
+}
+
+
+@Composable
+fun MyApp() {
+    val navController = rememberNavController()
+    ComposeNavGraph(navController = navController)
 }
